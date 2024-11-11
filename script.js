@@ -37,19 +37,22 @@ const owner = document.querySelector(".Owner");
 const species = document.querySelector(".species");
 const breed = document.querySelector(".breed");
 const listItem = document.createElement("ul");
-
 const container = document.getElementById("container");
 const list = [];
 
 const createList = function () {
   const items = document.createElement("li");
+  const special = document.createElement("p");
   for (let i = 0; i < list.length; i++) {
     const newAni = list[i];
-
-    items.innerText = newAni.ownerCompare(list[i]);
-
+    console.log(list[i].petName);
+    items.innerText = `name: ${list[i].petName} owner: ${list[i].ownerName} species: ${list[i].species} breed ${list[i].breed}`;
     listItem.appendChild(items);
     container.appendChild(listItem);
+    if (newAni.ownerName === list[i].ownerName) {
+      special.innerText = newAni.ownerCompare(list[i]);
+      container.appendChild(listItem);
+    }
   }
 };
 
